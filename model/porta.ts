@@ -26,6 +26,10 @@ export default class PortaModel {
     get aberta() {
         return this.#aberta
     }
+    
+    get fechada() {
+        return !this.#aberta
+    }
 
     desselecionar() {
         const selecionada = false

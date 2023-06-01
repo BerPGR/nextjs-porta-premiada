@@ -11,6 +11,7 @@
 .estrutura {
     display: flex;
     flex-grow: 1;
+    flex-direction: column-reverse;
     border-left: 5px solid brown;
     border-top: 5px solid brown;
     border-right: 5px solid brown;
@@ -46,8 +47,6 @@
     width: 100%;
     background-color: #ddd;
 }
-
-
 
 .selecionada {
     border-left: 5px solid yellow;
