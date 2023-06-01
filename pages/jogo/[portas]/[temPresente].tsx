@@ -9,6 +9,7 @@ import styles from '../../..//styles/Jogo.module.css'
 export default function Jogo() {
     const router = useRouter()
     const [portas, setPortas] = useState([])
+    const [valido, setValido] = useState(false)
 
     useEffect(() => {
       const portas = +router.query.portas
@@ -16,8 +17,19 @@ export default function Jogo() {
       setPortas(criarPortas(portas, temPresente))
     }, [router?.query])
 
+    useEffect(() => {
+      const portas = +router.query.portas
+      const temPresente = +router.query.temPresente
+
+      const qtdPortasValidas = portas >= 3 && portas <= 100   
+      const temPresenteValido = temPresente >= 1 && temPresente <= portas
+
+      setValido(qtdPortasValidas && temPresenteValido)
+    }, [portas])
+
     function renderizarPortas() {
-        return portas.map(porta => {
+
+        return valido && portas.map(porta => {
           return (
             <Porta value={porta} key={porta.numero} 
             onChange={novaPorta => {
@@ -31,7 +43,7 @@ export default function Jogo() {
     return (
         <div id={styles.jogo}>
             <div className={styles.portas}>
-                {renderizarPortas()}
+                {valido ? renderizarPortas() : <h2>Valores invalidos</h2>}
             </div>
             <div className={styles.botoes}>
                 <Link href="/">
