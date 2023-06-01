@@ -6,24 +6,9 @@ import { useState } from "react";
 import { atualizarPortas, criarPortas } from "../functions/portas";
 
 export default function Home() {
-
-  const [portas, setPortas] = useState(criarPortas(4, 2))
-
-  function renderizarPortas() {
-    return portas.map(porta => {
-      return (
-        <Porta value={porta} key={porta.numero} 
-        onChange={novaPorta => {
-          setPortas(atualizarPortas(portas, novaPorta))
-        }} />
-      )
-    })
-  }
-
   return (
     <div style={{display: 'flex'}}>
-      {renderizarPortas()}
-      {/*<Presente />*/}
+      <h1>Formulário do jogo!</h1>
     </div>
   )
 }
